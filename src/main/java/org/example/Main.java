@@ -7,30 +7,31 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
-        List<Question> questions = new ArrayList<>();
-        questions.add(new HourlyWageQuestion());
-        questions.add(new SalaryQuestion());
-        questions.add(new BenefitsQuestion());
-        questions.add(new OvertimePolicyQuestion());
 
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Please ask a question: ");
-        String question = scanner.nextLine().toLowerCase();
-
-        boolean foundAnswer = false;
-        for (Question q : questions) {
-            if (q.matches(question)) {
-                System.out.println(q.getAnswer());
-                foundAnswer = true;
-                break;
+        System.out.println("Voer uw naam in:");
+        Gebruiker gebruiker = new Gebruiker(scanner.nextLine());
+        System.out.print("Hallo"+ gebruiker.naam+" stel een vraag : ");
+        String vraagGebruiker = scanner.nextLine().toLowerCase();
+        boolean nogeenvraag = true;
+        Antwoord a = new Antwoord();
+        System.out.println(a.Antwoord(vraagGebruiker));
+        while (nogeenvraag) {
+            System.out.println("Wilt u nog een vraag stellen? [ja] [nee]");
+            vraagGebruiker = scanner.nextLine().toLowerCase();
+            if (vraagGebruiker.contains("ja")) {
+                System.out.print("Stel een vraag: ");
+                vraagGebruiker = scanner.nextLine().toLowerCase();
+                System.out.println(a.Antwoord(vraagGebruiker));
+            } else if (vraagGebruiker.contains("nee")) {
+                System.out.println("dankuwel voor het gebruiken van de chatbot");
+                nogeenvraag = false;
+            } else {
+                System.out.println("typ [ja] of [nee] in");
             }
         }
 
-        if (!foundAnswer) {
-            System.out.println("I'm sorry, I don't know how to answer that question.");
-        }
+            scanner.close();
 
-        scanner.close();
     }
 }
