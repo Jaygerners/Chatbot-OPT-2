@@ -11,7 +11,7 @@ class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Voer uw naam in:");
         Gebruiker gebruiker = new Gebruiker(scanner.nextLine());
-        System.out.print("Hallo"+ gebruiker.naam+" stel een vraag : ");
+        System.out.print("Hallo "+ gebruiker.naam+" stel een vraag : ");
         String vraagGebruiker = scanner.nextLine().toLowerCase();
         boolean nogeenvraag = true;
         Antwoord a = new Antwoord();
