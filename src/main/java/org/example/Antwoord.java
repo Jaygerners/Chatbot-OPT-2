@@ -1,9 +1,10 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class Antwoord {
-    String vraagGebruiker;
+    private String vraagGebruiker;
 
     public String Antwoord(String vraagGebruiker) {
         this.vraagGebruiker = vraagGebruiker;
@@ -14,12 +15,12 @@ class Antwoord {
         vraagList.add(new Voordelen());
         vraagList.add(new OverwerkBeleid());
         vraagList.add(new ReisVergoeding());
-        boolean vragenCheck = true;
         for (Vraag v : vraagList) {
             if (v.matches(vraagGebruiker)) {
-               return v.antwoordCheck();
+                return v.antwoordCheck();
             }
         }
         return "sorry die vraag begrijp ik niet";
+    }
 }
-}
+
